@@ -18,7 +18,6 @@ class Page1 extends StatefulWidget {
 }
 
 class _Page1State extends State<Page1> {
-
   int temp = 300;
   int tempSensor1 = 200;
   int tempSensor2 = 200;
@@ -113,13 +112,26 @@ class _Page1State extends State<Page1> {
     });
   }
 
+  void _opentransactionFormModal() {
+    showModalBottomSheet(
+        context: context,
+        builder: (_) {
+          return targetTempForm(onSubmit: onTargetTempFormSubmit);
+        });
+  }
+
+  void onTargetTempFormSubmit(int value){
+    mandaMensagem("Target,$value");
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // Menu superior
       appBar: AppBar(
         leading: IconButton(
-          onPressed: ()  { }, //TODO Perfil icon superior esquedo
+          onPressed: () {}, //TODO Perfil icon superior esquedo
           icon: const Icon(
             Icons.account_circle_rounded,
             size: 30,
@@ -127,7 +139,9 @@ class _Page1State extends State<Page1> {
         ),
         actions: [
           IconButton(
-            onPressed: () {TestPrint();}, //TODO Menu icon superior direito
+            onPressed: () {
+              TestPrint();
+            }, //TODO Menu icon superior direito
             icon: const Icon(
               Icons.menu,
               size: 30,
@@ -274,7 +288,7 @@ class _Page1State extends State<Page1> {
                         ),
 
                         //Botoes abaixo Temp e Timer
-                        const AlarmCreatButtons()
+                        AlarmCreatButtons(opentransactionFormModal: _opentransactionFormModal)
                       ],
                     ),
                   ),

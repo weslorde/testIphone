@@ -78,7 +78,7 @@ class _Page2State extends State<Page2> {
               ),
             ),
             const SizedBox(height: 15),
-            const AlarmCreatButtons()
+            //const AlarmCreatButtons()
           ],
         ),
       ),

@@ -113,6 +113,7 @@ blueScan(void Function(bool) inConBlueChange) async {
               BlueCharacteristicToSend = lsOfChar[y];
               print("foiiiii222222222");
               inConBlueChange(false);
+              mandaMensagem("Ping");
               //TODO chamar um "Ping" para receber as infos
             }
           }
